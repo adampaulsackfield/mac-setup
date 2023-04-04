@@ -4,11 +4,34 @@ A simple script used to set up M1 Mac from factory settings for a developement e
 
 ## Disclaimer
 
-User input is required for some steps, as is inputting password. This project only works if it has access to your backup files (sample strucutre below)
+User input is required for some steps, as is inputting password. This project only works if it has access to your backup files (sample strucutre below). The `backup.sh` script can be viewed [here](https://github.com/adampaulsackfield/mac-setup/blob/main/backup.sh)
 
 ### Backup Repo Structure
 
--- backup - brew - extensions.txt - mac - scripts - vscode - .aliases - .gitconfig - .zshrc - README.md - backup.sh
+```
+├── brew/
+│ └── install.txt
+├── mac/
+│ └── applications.txt
+├── scripts/
+│ ├── backup.sh
+│ └── otherUserScripts.sh
+├── vscode/
+│ ├── snippets/
+│ │ ├── global.json.code-snippets
+│ │ ├── javascript.json
+│ │ ├── javascriptreact.json
+│ │ ├── typescript.json
+│ │ └── typescriptreact.json
+│ ├── extensions.txt
+│ ├── keybindings.json
+│ └── settings.json
+├── .aliases
+├── .gitconfig
+├── .zshrc
+├── README.md
+└── backup.sh
+```
 
 ## How to Use
 
