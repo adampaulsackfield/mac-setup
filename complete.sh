@@ -103,7 +103,7 @@ sleep 1
 mkdir ~/Development
 mkdir ~/Backup
 mkdir ~/Scripts
-mkdir ~/Logs
+mkdir -p ~/Logs/cron
 mkdir ~/.ssh
 
 echo "=============================="
