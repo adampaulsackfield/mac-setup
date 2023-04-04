@@ -2,16 +2,11 @@
 
 MAC_USERNAME=adamsackfield
 
-echo "=============================="
-echo "Installing Xcode: Command-line-tools"
-echo "=============================="
-sleep 1
-
 xcode-select --install
 
 while true; do
     echo "=============================="
-    echo "Installing Xcode"
+    echo "Installing Xcode: Command-line-tools"
     echo "=============================="
     read -p "Press Y to confirm: " yn
 
@@ -194,8 +189,8 @@ echo "=============================="
 echo "Copying VSCode Keybindings"
 echo "=============================="
 sleep 1
-cp ~/Backup/system-config/vscode/keybindings.json ""/Users/$MAC_USERNAME/Library/Application\ Support/Code/User"
-cp ~/Backup/system-config/vscode/settings.json /Users/adamsackfield/Library/Application\ Support/Code/User 
+cp ~/Backup/system-config/vscode/keybindings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User"
+cp ~/Backup/system-config/vscode/settings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User" 
 
 echo "=============================="
 echo "Copying VSCode Settings"
@@ -211,7 +206,7 @@ echo "Copying VSCode Snippets"
 echo "=============================="
 sleep 1
 
-cp ~/Backup/system-config/vscode/snippets/* /Users/adamsackfield/Library/Application\ Support/Code/User/snippets 
+cp ~/Backup/system-config/vscode/snippets/* "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User/snippets"
 
 echo "=============================="
 echo "Copying Scripts"
