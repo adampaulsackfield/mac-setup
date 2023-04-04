@@ -1,11 +1,26 @@
 #! /bin/bash
 
+MAC_USERNAME=adamsackfield
+
 echo "=============================="
-echo "Installing Xcode"
+echo "Installing Xcode: Command-line-tools"
 echo "=============================="
 sleep 1
 
 xcode-select --install
+
+while true; do
+    echo "=============================="
+    echo "Installing Xcode"
+    echo "=============================="
+    read -p "Press Y to confirm: " yn
+
+    case $yn in
+        [Yy]* ) break;;
+        * ) echo "Press Y once XCode: Command-line-tools has been installed";;
+    esac
+done
+
 
 echo "=============================="
 echo "Installing Homebrew"
@@ -42,6 +57,8 @@ echo "=============================="
 echo "Installing Zsh Plugins"
 echo "=============================="
 sleep 1
+
+mkdir $ZSH_CUSTOM/plugins
 
 git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
@@ -104,6 +121,7 @@ brew install --cask visual-studio-code
 
 brew install mysql
 brew install mongodb-community
+brew install --cask mysqlworkbench
 
 brew install ansible
 brew install packer
@@ -136,6 +154,9 @@ brew install --cask signal
 brew install --cask dropzone
 brew install --cask alfred
 brew install --cask rectangle
+
+brew install --cask utm
+brew install zoom
 
 echo "=============================="
 echo "Create GitHub Key - name: github"
@@ -173,7 +194,7 @@ echo "=============================="
 echo "Copying VSCode Keybindings"
 echo "=============================="
 sleep 1
-cp ~/Backup/system-config/vscode/keybindings.json /Users/adamsackfield/Library/Application\ Support/Code/User
+cp ~/Backup/system-config/vscode/keybindings.json ""/Users/$MAC_USERNAME/Library/Application\ Support/Code/User"
 cp ~/Backup/system-config/vscode/settings.json /Users/adamsackfield/Library/Application\ Support/Code/User 
 
 echo "=============================="

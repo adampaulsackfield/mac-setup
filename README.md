@@ -23,7 +23,8 @@ User input is required for some steps, as is inputting password.
   - VSCode
   - Postman
 - Databases
-  - Mysql
+  - MySQL
+  - MySQLWorkbench
   - Mongodb-community
 - DevOps
   - Ansible
