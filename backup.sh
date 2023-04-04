@@ -2,6 +2,8 @@
 
 # https://dev.to/jeffshomali/how-to-backup-sync-all-of-your-dotfiles-with-github-e1c
 
+# THIS REPO SHOULD BE PRIVATE AND YOU SHOULD BE WARY WHERE YOU STORE SENSITIVE DATA SUCH AS AWS KEYS
+
 # Check to see if the Git CLI is installed
 IS_GIT_AVAILABLE="$(git --version)"
 if [[ $IS_GIT_AVAILABLE == *"version"* ]]; then

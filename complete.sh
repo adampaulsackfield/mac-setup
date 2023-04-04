@@ -45,7 +45,7 @@ brew install zsh
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # chsh -s /opt/homebrew/bin/zsh # Set as default 
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 
 
 echo "=============================="
@@ -120,7 +120,7 @@ brew install --cask mysqlworkbench
 
 brew install ansible
 brew install packer
-brew install docker
+brew install --cask docker
 brew install dropbox
 brew install --cask vagrant
 brew install --cask postman
