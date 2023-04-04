@@ -4,7 +4,19 @@ A simple script used to set up M1 Mac from factory settings for a developement e
 
 ## Disclaimer
 
-User input is required for some steps, as is inputting password.
+User input is required for some steps, as is inputting password. This project only works if it has access to your backup files (sample strucutre below)
+
+### Backup Repo Structure
+
+-- backup - brew - extensions.txt - mac - scripts - vscode - .aliases - .gitconfig - .zshrc - README.md - backup.sh
+
+## How to Use
+
+Simply run the following commands:
+
+- `curl -O https://raw.githubusercontent.com/adampaulsackfield/mac-setup/main/complete.sh`
+- `chmod 777 complete.sh`
+- `./complete.sh`
 
 ## Regular Installs:
 
