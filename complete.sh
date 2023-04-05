@@ -36,21 +36,21 @@ sleep 1
 
 brew install git
 
-echo "=============================="
-echo "Installing Zsh"
-echo "=============================="
-sleep 1
+while true; do
+    echo "=============================="
+    echo "Installing Zsh"
+    echo "=============================="
+    read -p "Press Y to confirm: " yn
 
-brew install zsh
+    case $yn in
+        [Yy]* ) break;;
+        * ) echo "Once Zsh installs you need to type exit and press enter. Press Y to confirm";;
+    esac
+done
 
-
-
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-# sed -i.tmp 's:env zsh::g' install.sh
-# sed -i.tmp 's:chsh -s .*$::g' install.sh
-
-# chsh -s /opt/homebrew/bin/zsh # Set as default 
-# export ZSH="$HOME/.oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+chsh -s /opt/homebrew/bin/zsh # Set as default 
+export ZSH="$HOME/.oh-my-zsh"
 
 
 echo "=============================="
