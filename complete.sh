@@ -43,7 +43,13 @@ sleep 1
 
 brew install zsh
 
+
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
+sed -i.tmp 's:env zsh::g' install.sh
+sed -i.tmp 's:chsh -s .*$::g' install.sh
+sh install.sh
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 # chsh -s /opt/homebrew/bin/zsh # Set as default 
 # export ZSH="$HOME/.oh-my-zsh"
 
