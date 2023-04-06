@@ -37,7 +37,7 @@ sleep 1
 brew install git
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-# chsh -s /opt/homebrew/bin/zsh # Set as default 
+
 export ZSH="$HOME/.oh-my-zsh"
 
 
@@ -185,12 +185,13 @@ echo "Cloning Backup Repo"
 echo "=============================="
 sleep 1
 
-git clone git@github.com:adampaulsackfield/backup.git system-config
+git clone git@github.com:adampaulsackfield/backup.git ~/Backup/system-config
 
 echo "=============================="
 echo "Copying VSCode Keybindings"
 echo "=============================="
 sleep 1
+
 cp ~/Backup/system-config/vscode/keybindings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User"
 cp ~/Backup/system-config/vscode/settings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User" 
 
@@ -242,6 +243,11 @@ while true; do
 done
 
 crontab -e
+
+echo "=============================="
+echo "Zsh set as default "
+echo "=============================="
+chsh -s /opt/homebrew/bin/zsh # Set as default 
 
 echo "=============================="
 echo "Recommended Tasks"
