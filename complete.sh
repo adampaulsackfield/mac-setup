@@ -37,7 +37,7 @@ sleep 1
 brew install git
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-chsh -s /opt/homebrew/bin/zsh # Set as default 
+# chsh -s /opt/homebrew/bin/zsh # Set as default 
 export ZSH="$HOME/.oh-my-zsh"
 
 
@@ -46,10 +46,8 @@ echo "Installing Zsh Plugins"
 echo "=============================="
 sleep 1
 
-mkdir $ZSH_CUSTOM/plugins
-
-git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "plugins=(git zsh-autosuggestions zsh-syntax-highlighting)" >> "$HOME/.zshrc"
 
