@@ -22,7 +22,10 @@ echo "Installing Homebrew"
 echo "=============================="
 sleep 1
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+curl -O https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+echo "exit 0" >> install.sh
+chmod +x install.sh 
+./install.sh 
 
 PATH=$PATH:/opt/homebrew/bin
 
