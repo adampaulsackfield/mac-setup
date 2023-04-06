@@ -1,5 +1,6 @@
 #! /bin/bash
 
+# TODO - allow this to be passed as arg
 MAC_USERNAME=adamsackfield
 
 xcode-select --install
@@ -36,6 +37,11 @@ sleep 1
 
 brew install git
 
+echo "=============================="
+echo "Installing Zsh"
+echo "=============================="
+sleep 1
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -62,11 +68,7 @@ cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
-
-p10k configure
  
-echo export PATH=$PATH:/opt/homebrew/bin >> ~/.zshrc
-source ~/.zshrc
 
 echo "=============================="
 echo "Installing Powerline Theme"
@@ -113,44 +115,44 @@ sleep 1
 brew install --cask iterm2
 brew install --cask visual-studio-code
 
-brew install mysql
-brew install mongodb-community
-brew install --cask mysqlworkbench
+# brew install mysql
+# brew install mongodb-community
+# brew install --cask mysqlworkbench
 
-brew install ansible
-brew install packer
-brew install --cask docker
-brew install dropbox
-brew install --cask vagrant
-brew install --cask postman
-brew install terraform
+# brew install ansible
+# brew install packer
+# brew install --cask docker
+# brew install dropbox
+# brew install --cask vagrant
+# brew install --cask postman
+# brew install terraform
 
-brew install --cask obsidian
-brew install --cask notion
-brew install --cask raindropio
-brew install --cask freedom
-brew install --cask rescuetime
-brew install --cask todoist
+# brew install --cask obsidian
+# brew install --cask notion
+# brew install --cask raindropio
+# brew install --cask freedom
+# brew install --cask rescuetime
+# brew install --cask todoist
 
-brew install --cask obs
-brew install --cask slack
-brew install --cask thunderbird
-brew install --cask protonmail-bridge
-brew install --cask firefox
-brew install --cask microsoft-edge
-brew install --cask google-chrome
-brew install --cask protonvpn
-brew install --cask telegram
-brew install --cask discord
-brew install --cask google-drive
-brew install --cask signal
+# brew install --cask obs
+# brew install --cask slack
+# brew install --cask thunderbird
+# brew install --cask protonmail-bridge
+# brew install --cask firefox
+# brew install --cask microsoft-edge
+# brew install --cask google-chrome
+# brew install --cask protonvpn
+# brew install --cask telegram
+# brew install --cask discord
+# brew install --cask google-drive
+# brew install --cask signal
 
-brew install --cask dropzone
-brew install --cask alfred
-brew install --cask rectangle
+# brew install --cask dropzone
+# brew install --cask alfred
+# brew install --cask rectangle
 
-brew install --cask utm
-brew install zoom
+# brew install --cask utm
+# brew install zoom
 
 echo "=============================="
 echo "Create GitHub Key - name: github"
@@ -247,6 +249,9 @@ echo "=============================="
 echo "Zsh set as default "
 echo "=============================="
 chsh -s /opt/homebrew/bin/zsh # Set as default 
+ p10k configure
+echo export PATH=$PATH:/opt/homebrew/bin >> ~/.zshrc
+source ~/.zshrc
 
 echo "=============================="
 echo "Recommended Tasks"
