@@ -169,6 +169,8 @@ IdentityFile ~/.ssh/github  >> ~/.ssh/config
 git config --global user.name "Adam Sackfield"    
 git config --global user.email "adam@adamsackfield.uk"  
 
+pbcopy < ~/.ssh/github.pub
+
 while true; do
     echo "Public Key created above must be added to GitHub before continuing"
     read -p "Press Y to confirm: " yn
