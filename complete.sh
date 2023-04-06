@@ -22,7 +22,7 @@ echo "Installing Homebrew"
 echo "=============================="
 sleep 1
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 PATH=$PATH:/opt/homebrew/bin
 
@@ -36,8 +36,8 @@ sleep 1
 
 brew install git
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
-# chsh -s /opt/homebrew/bin/zsh # Set as default 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+chsh -s /opt/homebrew/bin/zsh # Set as default 
 export ZSH="$HOME/.oh-my-zsh"
 
 
@@ -69,6 +69,15 @@ p10k configure
  
 echo export PATH=$PATH:/opt/homebrew/bin >> ~/.zshrc
 source ~/.zshrc
+
+echo "=============================="
+echo "Installing Powerline Theme"
+echo "=============================="
+sleep 1
+cd ~/Downloads
+git clone https://github.com/dracula/iterm.git
+
+# TODO - REMIND USER TO SET THIS THEME IN iTERM -> Settings -> Profiles -> Colors -> Bottom Right -> Import
 
 echo "=============================="
 echo "Installing Rosetta"
