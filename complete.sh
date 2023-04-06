@@ -22,7 +22,7 @@ echo "Installing Homebrew"
 echo "=============================="
 sleep 1
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 PATH=$PATH:/opt/homebrew/bin
 
@@ -36,20 +36,8 @@ sleep 1
 
 brew install git
 
-while true; do
-    echo "=============================="
-    echo "Installing Zsh"
-    echo "=============================="
-    read -p "Press Y to confirm: " yn
-
-    case $yn in
-        [Yy]* ) break;;
-        * ) echo "Once Zsh installs you need to type exit and press enter. Press Y to confirm";;
-    esac
-done
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-chsh -s /opt/homebrew/bin/zsh # Set as default 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
+# chsh -s /opt/homebrew/bin/zsh # Set as default 
 export ZSH="$HOME/.oh-my-zsh"
 
 
