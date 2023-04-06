@@ -22,10 +22,7 @@ echo "Installing Homebrew"
 echo "=============================="
 sleep 1
 
-curl -O https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-echo "exit 0" >> install.sh
-chmod +x install.sh 
-./install.sh 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 PATH=$PATH:/opt/homebrew/bin
 
