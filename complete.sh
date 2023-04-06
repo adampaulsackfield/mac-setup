@@ -72,10 +72,9 @@ echo "=============================="
 echo "Installing Powerline Theme"
 echo "=============================="
 sleep 1
-cd ~/Downloads
-git clone https://github.com/dracula/iterm.git
 
-# TODO - REMIND USER TO SET THIS THEME IN iTERM -> Settings -> Profiles -> Colors -> Bottom Right -> Import
+git clone https://github.com/dracula/iterm.git ~/Downloads
+
 
 echo "=============================="
 echo "Installing Rosetta"
@@ -255,6 +254,8 @@ echo "=============================="
 
 while true; do
     echo "- Change font in iTerm goto settings > profiles > text and set font to Space Mono for PowerLine"
+    echo "- Set iTerm Theme -> Settings -> Profiles -> Colors -> Color Presets -> Import -> Goto ~/Downloads -> Select theme file" 
+    echo "- Once theme is imported select color presets -> Dracula"
 
     read -p "Press Y to confirm: " yn
     case $yn in
