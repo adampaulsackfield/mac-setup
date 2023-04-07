@@ -18,6 +18,7 @@ mkdir ~/Development
 mkdir ~/Backup
 mkdir ~/Scripts
 mkdir -p ~/Logs/cron
+mkdir -p ~/Logs/scripts
 mkdir ~/.ssh
 
 # LOGGING
@@ -250,7 +251,7 @@ git config --global user.email "$GIT_EMAIL"
 # COPY PUBLIC KEY FOR GITHUB
 # =====================================================================================
 
-pbcopy < ~/.ssh/$GIT_SSH.pub
+cat ~/.ssh/$GIT_SSH.pub | pbcopy
 
 attention "Public key will be on your clipboard, head to GitHub and add a new SSH Key, you can paste the key after adding a name."
 
