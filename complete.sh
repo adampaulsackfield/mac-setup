@@ -1,9 +1,9 @@
 #! /bin/bash
 
 # TODO - allow this to be passed as arg
-MAC_USERNAME=adamsackfield
-GIT_USERNAME=adampaulsackfield
-GIT_EMAIL=adam@adamsackfield.uk
+MAC_USERNAME=$1
+GIT_USERNAME=$2
+GIT_EMAIL=$3
 
 
 divider="====================================================================================="
@@ -87,7 +87,7 @@ rm -rf fonts
  
 message_data "Downloading iTerm Dracula Theme"
 
-git clone https://github.com/dracula/iterm.git ~/Downloads
+git clone https://github.com/dracula/iterm.git ~/Downloads/iterm
 
 message_data "Installing Rosetta"
 
