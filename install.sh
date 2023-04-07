@@ -63,7 +63,7 @@ DIVIDER="=======================================================================
 # INSTALLING XCODE TOOLS
 # =====================================================================================
 
-# xcode-select --install
+xcode-select --install
 
 message_data "Installing Xcode: Command-line-tools"
 

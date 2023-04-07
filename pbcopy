@@ -1,1 +1,0 @@
-1       */1     *       *       *       cd ~/Backup/system-config && ./backup.sh >> ~/Logs/cron/backup-log.txt

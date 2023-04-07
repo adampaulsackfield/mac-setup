@@ -41,6 +41,13 @@ Simply run the following commands:
 - `chmod +x install.sh`
 - `./install.sh`
 
+## Variables
+
+- Github: Name (Used for setting up Git Config and SSH)
+- Github: Email (Used for setting up Git Config and SSH)
+- Github: SSH Key (Used for setting up Git Config and SSH)
+- Github: Username (Used to pull down Backup repo)
+
 ## Regular Installs:
 
 - Xcode
@@ -118,6 +125,10 @@ Simply run the following commands:
 - Copies settings from backup
 - Copies snippets from backup
 - Install extensions from backup
+
+### iTerm Config
+
+- Downloads Theme
 
 ### General Tasks
 
