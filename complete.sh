@@ -1,6 +1,5 @@
 #! /bin/bash
 
-# TODO - allow this to be passed as arg
 MAC_USERNAME=$1
 GIT_USERNAME=$2
 GIT_EMAIL=$3
@@ -157,17 +156,17 @@ attention
 
 while true; do
     message_data "Creating GitHub Keypair."
-    read -p "*** Name the key 'github', before pressing Y ***" yn
+    read -p "*** Name the key 'github' and add a password, after pressing Y ***" yn
 
     case $yn in
         [Yy]* ) break;;
-        * ) echo "Press Y to confirm you will name the key 'github'";
+        * ) echo "Press Y then name the key 'github'";
     esac
 done
 
 cd ~/.ssh
 
-ssh-keygen -o -t rsa -C "adam@adamsackfield.uk"  
+ssh-keygen -o -t rsa -C "$GIT_EMAIL"  
 ssh-add --apple-use-keychain ~/.ssh/github   
 
 echo "Host github.com"  >> ~/.ssh/config
@@ -192,6 +191,11 @@ while true; do
         * ) echo "Please press Y to confirm you have added the SSH Key to your github account.";;
     esac
 done
+
+
+ls "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User"
+ls "/Users/$MAC_USERNAME/Library/Application\ Support/Code/"
+ls "/Users/$MAC_USERNAME/Library/Application\ Support/"
 
 message_data "Cloning backup repo"
 
