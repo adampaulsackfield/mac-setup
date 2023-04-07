@@ -2,16 +2,12 @@
 
 set -euo pipefail
 
+# LOGGING
 exec &> >(tee install.log)
 
-MAC_USERNAME=$1
-GIT_USERNAME=$2
-GIT_EMAIL=$3
-
-
-divider="====================================================================================="
+# FUNCTIONS
 attention() {
-    echo "$divider"
+    echo "$DIVIDER"
     echo "             _______   _______   ______   _   _   _______   _____    ____    _   _  " 
     echo "     /\     |__   __| |__   __| |  ____| | \ | | |__   __| |_   _|  / __ \  | \ | | " 
     echo "    /  \       | |       | |    | |__    |  \| |    | |      | |   | |  | | |  \| | " 
@@ -25,23 +21,59 @@ attention() {
     echo "       |  _  /  |  __|   | |  | | | |  | |   | |   |  _  /  |  __|   | |  | |       " 
     echo "       | | \ \  | |____  | |__| | | |__| |  _| |_  | | \ \  | |____  | |__| |       " 
     echo "       |_|  \_\ |______|  \___\_\  \____/  |_____| |_|  \_\ |______| |_____/        "
-    echo "$divider"
-}
-
-message_data() {
-    echo $divider
+    echo "$DIVIDER"
+    echo ""
+    echo "$DIVIDER"
     echo ""
     echo "$1"
     echo ""
-    echo $divider
+    echo "$DIVIDER"
 }
 
-xcode-select --install
+message_data() {
+    echo $DIVIDER
+    echo ""
+    echo "$1"
+    echo ""
+    echo $DIVIDER
+}
 
-attention
+prompt_user() {
+    read -p "Press enter only when requirement is met"
+}
 
-message_data "Installing Xcode: Command-line-tools \n Wait for Xcode command-line-tools installation to complete before pressing any key \n"
-read -p "Press any key to continue"
+# USER INPUT
+echo "Enter the your name for Github. e.g. Adam Sackfield"
+read  GIT_NAME
+
+echo "Enter the your Github username. e.g adampaulsackfield"
+read  GIT_USERNAME
+
+echo "Enter the your Github email."
+read  GIT_EMAIL
+
+echo "Name your Github SSH_KEY: 'github' for instance."
+read  GIT_SSH
+
+# VARIABLES
+MAC_USERNAME=$(whoami)
+DIVIDER="====================================================================================="
+
+# =====================================================================================
+# INSTALLING XCODE TOOLS
+# =====================================================================================
+
+# xcode-select --install
+
+message_data "Installing Xcode: Command-line-tools"
+
+attention "Wait for Xcode command-line-tools installation to complete before pressing enter"
+
+prompt_user
+
+# =====================================================================================
+# INSTALLING HOMEBREW
+# =====================================================================================
 
 message_data "Installing Homebrew"
 
@@ -52,9 +84,17 @@ PATH=$PATH:/opt/homebrew/bin
 brew doctor
 brew analytics off
 
+# =====================================================================================
+# INSTALLING GIT
+# =====================================================================================
+
 message_data "Installing Git"
 
 brew install git
+
+# =====================================================================================
+# INSTALLING ZSH
+# =====================================================================================
 
 message_data "Installing Zsh"
 
@@ -62,12 +102,20 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 export ZSH="$HOME/.oh-my-zsh"
 
+# =====================================================================================
+# INSTALLING ZSH - PLUGINS
+# =====================================================================================
+
 message_data "Installing Zsh Plugins: syntax-highlighting, autosuggestions"
 
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
 echo "plugins=(git zsh-autosuggestions zsh-syntax-highlighting)" >> "$HOME/.zshrc"
+
+# =====================================================================================
+# INSTALLING ZSH - THEME: Powerlevel10k & Fonts
+# =====================================================================================
 
 message_data "Install Zsh: Powerlevel10k Theme / Fonts"
 
@@ -78,13 +126,25 @@ cd fonts
 cd ..
 rm -rf fonts
  
+# =====================================================================================
+# DOWNLOADING ITERM THEME: Dracula
+# =====================================================================================
+
 message_data "Downloading iTerm Dracula Theme"
 
 git clone https://github.com/dracula/iterm.git ~/Downloads/iterm
 
+# =====================================================================================
+# INSTALLING ROSETTA
+# =====================================================================================
+
 message_data "Installing Rosetta"
 
 sudo softwareupdate --install-rosetta
+
+# =====================================================================================
+# INSTALLING NVM / NODE:16
+# =====================================================================================
 
 message_data "Installing NVM and Node@16"
 
@@ -94,6 +154,10 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 nvm install 16 
 
+# =====================================================================================
+# CREATING USER DIRECTORIES
+# =====================================================================================
+
 message_data "Creating User Directories"
 
 mkdir ~/Development
@@ -102,106 +166,104 @@ mkdir ~/Scripts
 mkdir -p ~/Logs/cron
 mkdir ~/.ssh
 
-message_data "Installing Brew Applications"
+# =====================================================================================
+# INSTALLING BREW APPLICATIONS: This will take some time, user password may be required
+# =====================================================================================
+
+message_data "Installing Brew Applications \n This will take some time, user password may be \n required by some apps."
 
 brew install --cask iterm2
 brew install --cask visual-studio-code
 
-# # brew install mysql
-# # brew install mongodb-community
-# # brew install --cask mysqlworkbench
+# brew install mysql
+# brew install mongodb-community
+# brew install --cask mysqlworkbench
 
-# # brew install ansible
-# # brew install packer
-# # brew install terrßßaform
-# # brew install --cask docker
-# # brew install --cask vagrant
-# # brew install --cask postman
+# brew install ansible
+# brew install packer
+# brew install terrßßaform
+# brew install --cask docker
+# brew install --cask vagrant
+# brew install --cask postman
 
-# # brew install --cask obsidian
-# # brew install --cask notion
-# # brew install --cask raindropio
-# # brew install --cask freedom
-# # brew install --cask rescuetime
-# # brew install --cask todoist
+# brew install --cask obsidian
+# brew install --cask notion
+# brew install --cask raindropio
+# brew install --cask freedom
+# brew install --cask rescuetime
+# brew install --cask todoist
 
-# # brew install zoom
-# # brew install dropbox
-# # brew install --cask obs
-# # brew install --cask slack
-# # brew install --cask thunderbird
-# # brew install --cask protonmail-bridge
-# # brew install --cask firefox
-# # brew install --cask microsoft-edge
-# # brew install --cask google-chrome
-# # brew install --cask protonvpn
-# # brew install --cask telegram
-# # brew install --cask discord
-# # brew install --cask google-drive
-# # brew install --cask signal
+# brew install zoom
+# brew install dropbox
+# brew install --cask obs
+# brew install --cask slack
+# brew install --cask thunderbird
+# brew install --cask protonmail-bridge
+# brew install --cask firefox
+# brew install --cask microsoft-edge
+# brew install --cask google-chrome
+# brew install --cask protonvpn
+# brew install --cask telegram
+# brew install --cask discord
+# brew install --cask google-drive
+# brew install --cask signal
 
-# # brew install --cask dropzone
-# # brew install --cask alfred
-# # brew install --cask rectangle
+# brew install --cask dropzone
+# brew install --cask alfred
+# brew install --cask rectangle
 
-# # brew install --cask utm
+# brew install --cask utm
 
-attention
+# =====================================================================================
+# GITHUB KEYPAIR CREATION / GIT CONFIG
+# =====================================================================================
 
-while true; do
-    message_data "Creating GitHub Keypair."
-    read -p "*** Name the key 'github' and add a password, after pressing Y ***" yn
-
-    case $yn in
-        [Yy]* ) break;;
-        * ) echo "Press Y then name the key 'github'";
-    esac
-done
+message_data "Creating GitHub Keypair."
 
 cd ~/.ssh
 
-ssh-keygen -o -t rsa -C "$GIT_EMAIL"  
-ssh-add --apple-use-keychain ~/.ssh/github   
+ssh-keygen -o -t ed25519 -C "$GIT_EMAIL" -f ~/.ssh/$GIT_SSH  
+
+ssh-add --apple-use-keychain "~/.ssh/$GIT_SSH"  
 
 echo "Host github.com"  >> ~/.ssh/config
 echo "AddKeysToAgent yes" >> ~/.ssh/config
 echo "UseKeychain yes" >> ~/.ssh/config
-echo "IdentityFile ~/.ssh/github"  >> ~/.ssh/config
+echo "IdentityFile ~/.ssh/$GIT_SSH"  >> ~/.ssh/config
 
 cd ~
 
-git config --global user.name "$GIT_USERNAME"    
+git config --global user.name "$GIT_NAME"    
 git config --global user.email "$GIT_EMAIL"  
 
-pbcopy < ~/.ssh/github.pub
+# =====================================================================================
+# COPY PUBLIC KEY FOR GITHUB
+# =====================================================================================
 
-attention
+pbcopy < ~/.ssh/$GIT_SSH.pub
 
-while true; do
-    message_data "If you named the key 'github' then the public key should be available on your clipboard."
-    read -p "*** Confirm Public Key has been added to github.com, before pressing Y *** " yn
-    case $yn in
-        [Yy]* ) break;;
-        * ) echo "Please press Y to confirm you have added the SSH Key to your github account.";;
-    esac
-done
+attention "Public key will be on your clipboard, head to GitHub and add a new SSH Key, you can paste the key after adding a name."
+
+prompt_user
+
+# =====================================================================================
+# CLONE PRIVATE BACKUP REPO USING SSH
+# =====================================================================================
 
 message_data "Cloning backup repo"
 
-git clone git@github.com:adampaulsackfield/backup.git ~/Backup/system-config
+git clone "git@github.com:$GIT_USERNAME/backup.git" ~/system-config
+# TODO - ADD PATH BACK -  ~/Backup/system-config
 
-attention
+attention "VSCode will launch to trigger directory creation. Please close (VSCode) before pressing enter"
 
 code ~/Backup/system-config
 
-while true; do
-    message_data "VSCode needs to open, close it and press Y."
-    read -p "*** Confirm you have closed, before pressing Y *** " yn
-    case $yn in
-        [Yy]* ) break;;
-        * ) echo "Please press Y to confirm you have close VSCode.";;
-    esac
-done
+prompt_user
+
+# =====================================================================================
+# RESTORING VSCODE CONFIGURATION
+# =====================================================================================
 
 message_data "Configuring VSCode: Keybindings"
 
@@ -223,60 +285,53 @@ cp ~/Backup/system-config/vscode/snippets/* "/Users/$MAC_USERNAME/Library/Applic
 
 message_data "Restoring Scripts from Backup"
 
+# =====================================================================================
+# RESTORING SCRIPTS: MAKING SYMBOLIC LINK FOR BACKUP.SH
+# =====================================================================================
+
 cp ~/Backup/system-config/scirpts/* ~/Scripts
 rm ~/Scripts/backup.sh
 ln -s ~/Backup/system-config/backup.sh ~/Scripts/backup.sh
 
-attention
+# =====================================================================================
+# SCHEDULE CRONJOB: CREATING REGULAR CONFIG BACKUP
+# =====================================================================================
 
-message_data "Scheduling Backup"
+message_data "Scheduling Backup: The inverse of this process"
 
-pbcopy < "1       */1     *       *       *       cd ~/Backup/system-config && ./backup.sh >> ~/Logs/cron/backup-log.txt"
+attention "Crontab job for backups should be copied to the clipboard, after pressing enter VIM will launch, paster and then press :qw and return"
+
+echo "1       */1     *       *       *       cd ~/Backup/system-config && ./backup.sh >> ~/Logs/cron/backup-log.txt" | pbcopy 
+
+prompt_user
 
 chmod 777 ~/Backup/system-config/backup.sh
 
-while true; do
-    message_data "Confirm you have copied the cronjob from above into the VIM window"
-    echo: "--> press :wq to quit vim <--"
-
-    read -p "*** Press Y to confirm you have added the cronjon" yn
-    case $yn in
-        [Yy]* ) break;;
-        * ) echo "Please press Y to confirm.";;
-    esac
-done
-
 crontab -e
 
-attention
+# =====================================================================================
+# ZSH SET AS DEFAULT
+# =====================================================================================
 
-while true; do
-    message_data "Setting Zsh as default shell"
+message_data "Setting Zsh as default shell"
 
-    read -p "*** Once the Zsh shell launches you must type 'exit' and return" yn
-    case $yn in
-        [Yy]* ) break;;
-        * ) echo "Please press Y to confirm you understand.";;
-    esac
-done
+attention "Once the Zsh shell launches you must type 'exit' and return"
+
+prompt_user
 
 chsh -s /opt/homebrew/bin/zsh # Set as default 
 echo export PATH=$PATH:/opt/homebrew/bin >> ~/.zshrc
 source ~/.zshrc
 
-attention
+# =====================================================================================
+# RECOMMENDED TASKS
+# =====================================================================================
 
-message_data "Recommended Tasks"
+attention "Recommended Tasks"
 
-while true; do
-    echo "- Change font in iTerm goto settings > profiles > text and set font to Space Mono for PowerLine"
-    echo "- Set iTerm Theme -> Settings -> Profiles -> Colors -> Color Presets -> Import -> Goto ~/Downloads -> Select theme file" 
-    echo "- Once theme is imported select color presets -> Dracula"
-    echo "- Run: p10k configure in zsh" # TODO - Check if can copy confifguee file
+echo "- Change font in iTerm goto settings > profiles > text and set font to Space Mono for PowerLine"
+echo "- Set iTerm Theme -> Settings -> Profiles -> Colors -> Color Presets -> Import -> Goto ~/Downloads -> Select theme file" 
+echo "- Once theme is imported select color presets -> Dracula"
+echo "- Run: p10k configure in zsh" # TODO - Check if can copy confifguee file
 
-    read -p "Press Y to confirm: " yn
-    case $yn in
-        [Yy]* ) break;;
-        * ) echo "Please press Y to you understand.";;
-    esac
-done
+prompt_user
