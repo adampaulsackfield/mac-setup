@@ -32,11 +32,13 @@ attention() {
 }
 
 message_data() {
+    echo ""
     echo $DIVIDER
     echo ""
     echo "$1"
     echo ""
     echo $DIVIDER
+    echo ""
 }
 
 prompt_user() {
@@ -59,6 +61,7 @@ read  GIT_SSH
 # VARIABLES
 MAC_USERNAME=$(whoami)
 DIVIDER="====================================================================================="
+OH_MY_ZSH_CUSTOM=~/.oh-my-zsh/custom
 
 # =====================================================================================
 # INSTALLING XCODE TOOLS
@@ -109,8 +112,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 message_data "Installing Zsh Plugins: syntax-highlighting, autosuggestions"
 
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions $OH_MY_ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $OH_MY_ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 echo "plugins=(git zsh-autosuggestions zsh-syntax-highlighting)" >> "$HOME/.zshrc"
 
@@ -120,7 +123,7 @@ echo "plugins=(git zsh-autosuggestions zsh-syntax-highlighting)" >> "$HOME/.zshr
 
 message_data "Install Zsh: Powerlevel10k Theme / Fonts"
 
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+git clone https://github.com/romkatv/powerlevel10k.git $OH_MY_ZSH_CUSTOM/themes/powerlevel10k
 git clone https://github.com/powerline/fonts.git
 cd fonts
 ./install.sh
@@ -324,6 +327,8 @@ chsh -s /opt/homebrew/bin/zsh # Set as default
 echo export PATH=$PATH:/opt/homebrew/bin >> ~/.zshrc
 source ~/.zshrc
 
+p10k configure 
+
 # =====================================================================================
 # RECOMMENDED TASKS
 # =====================================================================================
@@ -336,3 +341,5 @@ echo "- Once theme is imported select color presets -> Dracula"
 echo "- Run: p10k configure in zsh" # TODO - Check if can copy confifguee file
 
 prompt_user
+
+rm -rf ~/Downloads/iterm
