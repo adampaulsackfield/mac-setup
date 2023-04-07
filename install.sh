@@ -1,11 +1,8 @@
 #! /bin/bash
 
 set -euo pipefail
-exec 1> >(tee -a install.log) 2>&1
 
-exec 1>(tee -a install.log)
-exec 2>(tee -a install-errors.log)
-
+exec &> >(tee install.log)
 
 MAC_USERNAME=$1
 GIT_USERNAME=$2
@@ -37,24 +34,14 @@ message_data() {
     echo "$1"
     echo ""
     echo $divider
-
-    read -p "Press any key to continue"
 }
 
 xcode-select --install
 
 attention
 
-while true; do
-    message_data "Installing Xcode: Command-line-tools"
-    read -p "*** Wait for Xcode command-line-tools installation to complete before pressing Y ***" yn
-
-    case $yn in
-        [Yy]* ) break;;
-        * ) echo "Press Y once XCode: Command-line-tools has been installed";
-    esac
-done
-
+message_data "Installing Xcode: Command-line-tools \n Wait for Xcode command-line-tools installation to complete before pressing any key \n"
+read -p "Press any key to continue"
 
 message_data "Installing Homebrew"
 

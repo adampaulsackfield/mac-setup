@@ -37,9 +37,9 @@ User input is required for some steps, as is inputting password. This project on
 
 Simply run the following commands:
 
-- `curl -O https://raw.githubusercontent.com/adampaulsackfield/mac-setup/main/complete.sh`
-- `chmod 777 complete.sh`
-- `./complete.sh`
+- `curl -O https://raw.githubusercontent.com/adampaulsackfield/mac-setup/main/install.sh`
+- `chmod +x install.sh`
+- `./install.sh`
 
 ## Regular Installs:
 
@@ -57,6 +57,7 @@ Simply run the following commands:
   - iTerm2
   - VSCode
   - Postman
+  - UTM
 - Databases
   - MySQL
   - MySQLWorkbench
@@ -83,6 +84,7 @@ Simply run the following commands:
   - TeleGram
   - Discord
   - Signal
+  - Zoom
 - General
   - OBS
   - ThunderBird
