@@ -119,11 +119,10 @@ brew install --cask visual-studio-code
 
 # # brew install ansible
 # # brew install packer
+# # brew install terrßßaform
 # # brew install --cask docker
-# # brew install dropbox
 # # brew install --cask vagrant
 # # brew install --cask postman
-# # brew install terraform
 
 # # brew install --cask obsidian
 # # brew install --cask notion
@@ -132,6 +131,8 @@ brew install --cask visual-studio-code
 # # brew install --cask rescuetime
 # # brew install --cask todoist
 
+# # brew install zoom
+# # brew install dropbox
 # # brew install --cask obs
 # # brew install --cask slack
 # # brew install --cask thunderbird
@@ -150,7 +151,6 @@ brew install --cask visual-studio-code
 # # brew install --cask rectangle
 
 # # brew install --cask utm
-# # brew install zoom
 
 attention
 
@@ -192,14 +192,22 @@ while true; do
     esac
 done
 
-
-ls "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User"
-ls "/Users/$MAC_USERNAME/Library/Application\ Support/Code/"
-ls "/Users/$MAC_USERNAME/Library/Application\ Support/"
-
 message_data "Cloning backup repo"
 
 git clone git@github.com:adampaulsackfield/backup.git ~/Backup/system-config
+
+attention
+
+code ~/Backup/system-config
+
+while true; do
+    message_data "VSCode needs to open, close it and press Y."
+    read -p "*** Confirm you have closed, before pressing Y *** " yn
+    case $yn in
+        [Yy]* ) break;;
+        * ) echo "Please press Y to confirm you have close VSCode.";;
+    esac
+done
 
 message_data "Configuring VSCode: Keybindings"
 
@@ -229,7 +237,7 @@ attention
 
 message_data "Scheduling Backup"
 
-echo "1       */1     *       *       *       cd ~/Backup/system-config && ./backup.sh >> ~/Logs/cron/backup-log.txt"
+pbcopy < "1       */1     *       *       *       cd ~/Backup/system-config && ./backup.sh >> ~/Logs/cron/backup-log.txt"
 
 chmod 777 ~/Backup/system-config/backup.sh
 
@@ -270,7 +278,7 @@ while true; do
     echo "- Change font in iTerm goto settings > profiles > text and set font to Space Mono for PowerLine"
     echo "- Set iTerm Theme -> Settings -> Profiles -> Colors -> Color Presets -> Import -> Goto ~/Downloads -> Select theme file" 
     echo "- Once theme is imported select color presets -> Dracula"
-    echo "- Run: p10k configure in zsh" # TODO - CHeck if can copy confifguee file
+    echo "- Run: p10k configure in zsh" # TODO - Check if can copy confifguee file
 
     read -p "Press Y to confirm: " yn
     case $yn in
