@@ -2,8 +2,26 @@
 
 set -euo pipefail
 
+# =====================================================================================
+#   CREATING USER DIRECTORIES: the following will be created
+# - ~/Development
+# - ~/Backup
+# - ~/Scripts
+# - ~/Logs/cron
+# - ~/Logs/scripts
+# - ~/.ssh
+# =====================================================================================
+
+message_data "Creating User Directories"
+
+mkdir ~/Development
+mkdir ~/Backup
+mkdir ~/Scripts
+mkdir -p ~/Logs/cron
+mkdir ~/.ssh
+
 # LOGGING
-exec &> >(tee install.log)
+exec &> >(tee ~/Logs/scripts/install.log)
 
 # FUNCTIONS
 attention() {
@@ -157,18 +175,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 nvm install 16 
-
-# =====================================================================================
-# CREATING USER DIRECTORIES
-# =====================================================================================
-
-message_data "Creating User Directories"
-
-mkdir ~/Development
-mkdir ~/Backup
-mkdir ~/Scripts
-mkdir -p ~/Logs/cron
-mkdir ~/.ssh
 
 # =====================================================================================
 # INSTALLING BREW APPLICATIONS: This will take some time, user password may be required
