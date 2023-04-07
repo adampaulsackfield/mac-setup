@@ -1,5 +1,11 @@
 #! /bin/bash
 
+set -euo pipefail
+exec 1> >(tee -a install.log) 2>&1
+
+exec 1>(tee -a install.log)
+exec 2>(tee -a install-errors.log)
+
 MAC_USERNAME=$1
 GIT_USERNAME=$2
 GIT_EMAIL=$3
