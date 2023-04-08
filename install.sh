@@ -235,7 +235,7 @@ cd ~/.ssh
 
 ssh-keygen -o -t ed25519 -C "$GIT_EMAIL" -f ~/.ssh/$GIT_SSH  
 
-ssh-add --apple-use-keychain "~/.ssh/$GIT_SSH"  
+ssh-add --apple-use-keychain ~/.ssh/$GIT_SSH
 
 echo "Host github.com"  >> ~/.ssh/config
 echo "AddKeysToAgent yes" >> ~/.ssh/config
@@ -263,8 +263,7 @@ prompt_user
 
 message_data "Cloning backup repo"
 
-git clone "git@github.com:$GIT_USERNAME/backup.git" ~/system-config
-# TODO - ADD PATH BACK -  ~/Backup/system-config
+git clone "git@github.com:$GIT_USERNAME/backup.git" ~/Backup/system-config
 
 attention "VSCode will launch to trigger directory creation. Please close (VSCode) before pressing enter"
 
