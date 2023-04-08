@@ -2,27 +2,10 @@
 
 set -euo pipefail
 
-# =====================================================================================
-#   CREATING USER DIRECTORIES: the following will be created
-# - ~/Development
-# - ~/Backup
-# - ~/Scripts
-# - ~/Logs/cron
-# - ~/Logs/scripts
-# - ~/.ssh
-# =====================================================================================
-
-message_data "Creating User Directories"
-
-mkdir ~/Development
-mkdir ~/Backup
-mkdir ~/Scripts
-mkdir -p ~/Logs/cron
-mkdir -p ~/Logs/scripts
-mkdir ~/.ssh
-
-# LOGGING
-exec &> >(tee ~/Logs/scripts/install.log)
+# VARIABLES
+MAC_USERNAME=$(whoami)
+DIVIDER="====================================================================================="
+OH_MY_ZSH_CUSTOM=~/.oh-my-zsh/custom
 
 # FUNCTIONS
 attention() {
@@ -64,6 +47,28 @@ prompt_user() {
     read -p "Press enter only when requirement is met"
 }
 
+# =====================================================================================
+#   CREATING USER DIRECTORIES: the following will be created
+# - ~/Development
+# - ~/Backup
+# - ~/Scripts
+# - ~/Logs/cron
+# - ~/Logs/scripts
+# - ~/.ssh
+# =====================================================================================
+
+message_data "Creating User Directories"
+
+mkdir ~/Development
+mkdir ~/Backup
+mkdir ~/Scripts
+mkdir -p ~/Logs/cron
+mkdir -p ~/Logs/scripts
+mkdir ~/.ssh
+
+# LOGGING
+exec &> >(tee ~/Logs/scripts/install.log)
+
 # USER INPUT
 echo "Enter the your name for Github. e.g. Adam Sackfield"
 read  GIT_NAME
@@ -76,11 +81,6 @@ read  GIT_EMAIL
 
 echo "Name your Github SSH_KEY: 'github' for instance."
 read  GIT_SSH
-
-# VARIABLES
-MAC_USERNAME=$(whoami)
-DIVIDER="====================================================================================="
-OH_MY_ZSH_CUSTOM=~/.oh-my-zsh/custom
 
 # =====================================================================================
 # INSTALLING XCODE TOOLS
