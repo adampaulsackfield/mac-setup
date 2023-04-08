@@ -35,11 +35,13 @@ attention() {
 
 message_data() {
     echo ""
+    echo ""
     echo $DIVIDER
     echo ""
     echo "$1"
     echo ""
     echo $DIVIDER
+    echo ""
     echo ""
 }
 
@@ -161,7 +163,7 @@ git clone https://github.com/dracula/iterm.git ~/Downloads/iterm
 # INSTALLING ROSETTA
 # =====================================================================================
 
-message_data "Installing Rosetta"
+message_data "Installing Rosetta: Type password, press enter. Then type 'A' and press enter"
 
 sudo softwareupdate --install-rosetta
 
@@ -270,6 +272,8 @@ attention "VSCode will launch to trigger directory creation. Please close (VSCod
 code ~/Backup/system-config
 
 prompt_user
+
+mkdir -p /Users/$MAC_USERNAME/Library/Application\ Support/Code/User
 
 # =====================================================================================
 # RESTORING VSCODE CONFIGURATION
