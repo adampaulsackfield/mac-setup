@@ -273,7 +273,7 @@ code ~/Backup/system-config
 
 prompt_user
 
-mkdir -p /Users/$MAC_USERNAME/Library/Application\ Support/Code/User/snippets
+mkdir -p "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User/snippets"
 
 # =====================================================================================
 # RESTORING VSCODE CONFIGURATION
@@ -287,11 +287,11 @@ message_data "Configuring VSCode: Settings"
 
 cp ~/Backup/system-config/vscode/settings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User" 
 
-message_data "Configuring VSCode: Installing Extensions"
+# message_data "Configuring VSCode: Installing Extensions"
 
-while read extension; do
-    code --install-extension "$extension"
-done < ~/Backup/system-config/extensions.txt
+# while read extension; do
+#     code --install-extension "$extension"
+# done < ~/Backup/system-config/vscode/extensions.txt
 
 message_data "Configuring VSCode: Snippets"
 
@@ -347,6 +347,7 @@ attention "Recommended Tasks"
 
 echo "- Change font in iTerm goto settings > profiles > text and set font to Space Mono for PowerLine"
 echo "- Set iTerm Theme -> Settings -> Profiles -> Colors -> Color Presets -> Import -> Goto ~/Downloads -> Select theme file" 
+echo "- Install VSCode extensions"
 echo "- Once theme is imported select color presets -> Dracula"
 echo "- Run: p10k configure in zsh" # TODO - Check if can copy confifguee file
 
