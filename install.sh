@@ -273,7 +273,7 @@ code ~/Backup/system-config
 
 prompt_user
 
-mkdir -p /Users/$MAC_USERNAME/Library/Application\ Support/Code/User
+mkdir -p /Users/$MAC_USERNAME/Library/Application\ Support/Code/User/snippets
 
 # =====================================================================================
 # RESTORING VSCODE CONFIGURATION
