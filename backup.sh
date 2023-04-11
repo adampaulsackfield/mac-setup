@@ -22,7 +22,12 @@ cp  $HOME/Library/Application\ Support/Code/User/{keybindings.json,settings.json
 cp -r $HOME/Library/Application\ Support/Code/User/snippets $HOME/Backup/system-config/vscode/
 
 # Create list of installed extensions
-ls ~/.vscode/extensions > $HOME/Backup/system-config/vscode/extensions.txt 
+ls ~/.vscode/extensions > $HOME/Backup/system-config/vscode/extensions-ver.txt 
+
+while read -r line; do
+  new_name=$(echo "$line" | awk -F'.' '{print $1"."$2}' | sed 's/-[^-]*$//')
+  echo "$line" "->" "$new_name"
+done < "$HOME/Backup/system-config/vscode/extensions-ver.txt" > extensions.txt
 
 # Dot files
 # ====================

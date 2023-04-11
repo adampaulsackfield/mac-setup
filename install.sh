@@ -287,11 +287,11 @@ message_data "Configuring VSCode: Settings"
 
 cp ~/Backup/system-config/vscode/settings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User" 
 
-# message_data "Configuring VSCode: Installing Extensions"
+message_data "Configuring VSCode: Installing Extensions"
 
-# while read extension; do
-#     code --install-extension "$extension"
-# done < ~/Backup/system-config/vscode/extensions.txt
+while read extension; do
+    code --install-extension "$extension"
+done < ~/Backup/system-config/vscode/extensions.txt
 
 message_data "Configuring VSCode: Snippets"
 
