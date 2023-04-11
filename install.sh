@@ -303,7 +303,7 @@ message_data "Restoring Scripts from Backup"
 # RESTORING SCRIPTS: MAKING SYMBOLIC LINK FOR BACKUP.SH
 # =====================================================================================
 
-cp ~/Backup/system-config/scirpts/* ~/Scripts
+cp ~/Backup/system-config/scripts/* ~/Scripts
 rm ~/Scripts/backup.sh
 ln -s ~/Backup/system-config/backup.sh ~/Scripts/backup.sh
 
@@ -335,9 +335,7 @@ prompt_user
 
 chsh -s /opt/homebrew/bin/zsh # Set as default 
 echo export PATH=$PATH:/opt/homebrew/bin >> ~/.zshrc
-source ~/.zshrc
-
-p10k configure 
+source ~/.zshrc 
 
 # =====================================================================================
 # RECOMMENDED TASKS
