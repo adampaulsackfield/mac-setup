@@ -2,8 +2,6 @@
 
 # https://dev.to/jeffshomali/how-to-backup-sync-all-of-your-dotfiles-with-github-e1c
 
-# THIS REPO SHOULD BE PRIVATE AND YOU SHOULD BE WARY WHERE YOU STORE SENSITIVE DATA SUCH AS AWS KEYS
-
 # Check to see if the Git CLI is installed
 IS_GIT_AVAILABLE="$(git --version)"
 if [[ $IS_GIT_AVAILABLE == *"version"* ]]; then
@@ -24,10 +22,12 @@ cp -r $HOME/Library/Application\ Support/Code/User/snippets $HOME/Backup/system-
 # Create list of installed extensions
 ls ~/.vscode/extensions > $HOME/Backup/system-config/vscode/extensions-ver.txt 
 
+awk '!/extensions\.json/' $HOME/Backup/system-config/vscode/extensions-ver.txt > temp_file && mv temp_file $HOME/Backup/system-config/vscode/extensions-ver.txt
+
 while read -r line; do
   new_name=$(echo "$line" | awk -F'.' '{print $1"."$2}' | sed 's/-[^-]*$//')
-  echo "$line" "->" "$new_name"
-done < "$HOME/Backup/system-config/vscode/extensions-ver.txt" > extensions.txt
+  echo "$new_name"
+done < "$HOME/Backup/system-config/vscode/extensions-ver.txt" > "$HOME/Backup/system-config/vscode/extensions.txt"
 
 # Dot files
 # ====================
@@ -53,6 +53,24 @@ cp $HOME/.gitconfig .
 # Scripts
 # ====================
 cp -r $HOME/Scripts/* $HOME/Backup/system-config/scripts
+
+# iTerm
+# ====================
+cp ~/Library/Preferences/com.googlecode.iterm2.plist  $HOME/Backup/system-config/iterm/
+
+# Postman
+# ====================
+cp -r ~/Library/Application\ Support/Postman $HOME/Backup/system-config/postman/
+
+# SSH
+# ====================
+cp  ~/.ssh/config $HOME/Backup/system-config/ssh
+
+# Finder
+# ====================
+cp ~/Library/Preferences/com.apple.finder.plist $HOME/Backup/system-config/
+
+cp ~/Library/Preferences/com.apple.systempreferences.plist $HOME/Backup/system-config/
 
 # Status
 gs="$(git status | grep -i "modified")"
