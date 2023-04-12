@@ -338,12 +338,6 @@ crontab -e
 # ZSH SET AS DEFAULT
 # =====================================================================================
 
-message_data "Setting Zsh as default shell"
-
-attention "Once the Zsh shell launches you must type 'exit' and return"
-
-prompt_user
-
 # chsh -s /opt/homebrew/bin/zsh # Set as default 
 echo "export PATH=$PATH:/opt/homebrew/bin" >> ~/.zshrc
 # source ~/.zshrc 
