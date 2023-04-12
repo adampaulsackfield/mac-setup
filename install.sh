@@ -151,7 +151,7 @@ cd fonts
 cd ..
 rm -rf fonts
 
-echo "source ~/$HOME/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme" >> "$HOME/.zshrc"
+echo "source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme" >> "$HOME/.zshrc"
  
 # =====================================================================================
 # DOWNLOADING ITERM THEME: Dracula
