@@ -183,7 +183,7 @@ nvm install 16
 # INSTALLING BREW APPLICATIONS: This will take some time, user password may be required
 # =====================================================================================
 
-message_data "Installing Brew Applications \n This will take some time, user password may be \n required by some apps."
+message_data "Installing Brew Applications \\n This will take some time, user password may be \\n required by some apps."
 
 brew install --cask iterm2
 brew install --cask visual-studio-code
@@ -344,7 +344,7 @@ prompt_user
 
 # chsh -s /opt/homebrew/bin/zsh # Set as default 
 echo export PATH=$PATH:/opt/homebrew/bin >> ~/.zshrc
-source ~/.zshrc 
+# source ~/.zshrc 
 
 # =====================================================================================
 # RECOMMENDED TASKS
@@ -355,7 +355,7 @@ attention "Recommended Tasks"
 echo "- Change font in iTerm goto settings > profiles > text and set font to Space Mono for PowerLine"
 echo "- Set iTerm Theme -> Settings -> Profiles -> Colors -> Color Presets -> Import -> Goto ~/Downloads -> Select theme file" 
 echo "- Once theme is imported select color presets -> Dracula"
-echo "- Run: p10k configure in zsh" # TODO - Check if can copy confifguee file
+echo "- Open iTerm and Run: p10k configure in zsh" # TODO - Check if can copy confifguee file
 
 prompt_user
 
