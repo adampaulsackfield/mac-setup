@@ -150,6 +150,8 @@ cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
+
+echo "source ~/$HOME/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme" >> "$HOME/.zshrc"
  
 # =====================================================================================
 # DOWNLOADING ITERM THEME: Dracula
@@ -343,19 +345,23 @@ attention "Once the Zsh shell launches you must type 'exit' and return"
 prompt_user
 
 # chsh -s /opt/homebrew/bin/zsh # Set as default 
-echo export PATH=$PATH:/opt/homebrew/bin >> ~/.zshrc
+echo "export PATH=$PATH:/opt/homebrew/bin" >> ~/.zshrc
 # source ~/.zshrc 
 
 # =====================================================================================
 # RECOMMENDED TASKS
 # =====================================================================================
 
+cp ~/Backup/system-config/vscode/keybindings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User/"
+
+cp ~/Backup/system-config/vscode/settings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User/" 
+
 attention "Recommended Tasks"
 
 echo "- Change font in iTerm goto settings > profiles > text and set font to Space Mono for PowerLine"
 echo "- Set iTerm Theme -> Settings -> Profiles -> Colors -> Color Presets -> Import -> Goto ~/Downloads -> Select theme file" 
 echo "- Once theme is imported select color presets -> Dracula"
-echo "- Open iTerm and Run: p10k configure in zsh" # TODO - Check if can copy confifguee file
+echo "- Open iTerm and p10k configure should appear"
 
 prompt_user
 
