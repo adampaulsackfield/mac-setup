@@ -346,16 +346,16 @@ echo "export PATH=$PATH:/opt/homebrew/bin" >> ~/.zshrc
 # RECOMMENDED TASKS
 # =====================================================================================
 
-cp ~/Backup/system-config/vscode/keybindings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User/"
+cp ~/Backup/system-config/vscode/keybindings.json ~/Library/Application\ Support/Code/User
 
-cp ~/Backup/system-config/vscode/settings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User/" 
+cp ~/Backup/system-config/vscode/settings.json ~/Library/Application\ Support/Code/User
 
 attention "Recommended Tasks"
 
+echo "- Open iTerm and p10k configure should appear"
 echo "- Change font in iTerm goto settings > profiles > text and set font to Space Mono for PowerLine"
 echo "- Set iTerm Theme -> Settings -> Profiles -> Colors -> Color Presets -> Import -> Goto ~/Downloads -> Select theme file" 
 echo "- Once theme is imported select color presets -> Dracula"
-echo "- Open iTerm and p10k configure should appear"
 
 prompt_user
 
