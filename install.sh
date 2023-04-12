@@ -276,16 +276,25 @@ prompt_user
 mkdir -p "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User/snippets"
 
 # =====================================================================================
+# RESTORING ZSH CONFIGURATION
+# =====================================================================================
+message_data "Configuring ZSH: Aliases"
+
+cp ~/Backup/system-config/.aliases ~/
+
+echo "source ~/.aliases" >> ~/.zshrc
+
+# =====================================================================================
 # RESTORING VSCODE CONFIGURATION
 # =====================================================================================
 
 message_data "Configuring VSCode: Keybindings"
 
-cp ~/Backup/system-config/vscode/keybindings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User"
+cp ~/Backup/system-config/vscode/keybindings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User/"
 
 message_data "Configuring VSCode: Settings"
 
-cp ~/Backup/system-config/vscode/settings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User" 
+cp ~/Backup/system-config/vscode/settings.json "/Users/$MAC_USERNAME/Library/Application\ Support/Code/User/" 
 
 message_data "Configuring VSCode: Installing Extensions"
 
@@ -333,7 +342,7 @@ attention "Once the Zsh shell launches you must type 'exit' and return"
 
 prompt_user
 
-chsh -s /opt/homebrew/bin/zsh # Set as default 
+# chsh -s /opt/homebrew/bin/zsh # Set as default 
 echo export PATH=$PATH:/opt/homebrew/bin >> ~/.zshrc
 source ~/.zshrc 
 
@@ -345,7 +354,6 @@ attention "Recommended Tasks"
 
 echo "- Change font in iTerm goto settings > profiles > text and set font to Space Mono for PowerLine"
 echo "- Set iTerm Theme -> Settings -> Profiles -> Colors -> Color Presets -> Import -> Goto ~/Downloads -> Select theme file" 
-echo "- Install VSCode extensions"
 echo "- Once theme is imported select color presets -> Dracula"
 echo "- Run: p10k configure in zsh" # TODO - Check if can copy confifguee file
 
